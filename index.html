@@ -208,6 +208,17 @@
             color: white;
         }
 
+        .empty-archive-card {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 40px;
+            border-style: dashed;
+        }
+
+        .empty-archive-title {
+            color: #888;
+        }
+
         footer {
             text-align: center;
             margin-top: 30px;
@@ -297,8 +308,8 @@
             
             <div class="archive-grid">
                 <!-- Past monthly editions will appear here as new months are added -->
-                <div class="archive-card" style="grid-column: 1 / -1; text-align: center; padding: 40px; border-style: dashed;">
-                    <div class="archive-month" style="color: #888;">No archived editions yet</div>
+                <div class="archive-card empty-archive-card">
+                    <div class="archive-month empty-archive-title">No archived editions yet</div>
                     <div class="archive-date">Past editions will appear here as new monthly lists are published</div>
                 </div>
             </div>
