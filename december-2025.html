@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Can't Miss List - St. Louis Microsoft Fabric / Power BI Meetup</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #00B7C3 0%, #00BCF2 50%, #00D4A1 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            text-align: center;
+        }
+
+        .logo-text {
+            background: linear-gradient(135deg, #00B7C3 0%, #00BCF2 50%, #00D4A1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 2.5em;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .meetup-name {
+            color: #0078D4;
+            font-size: 1.3em;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .meetup-link {
+            color: #106EBE;
+            text-decoration: none;
+            font-size: 0.95em;
+            transition: color 0.3s ease;
+        }
+
+        .meetup-link:hover {
+            color: #00B7C3;
+            text-decoration: underline;
+        }
+
+        .date-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #00B7C3 0%, #00D4A1 100%);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 600;
+            margin-top: 15px;
+        }
+
+        .content-wrapper {
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #0078D4;
+            font-size: 2em;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .topics-grid {
+            display: grid;
+            gap: 25px;
+        }
+
+        .topic-card {
+            background: linear-gradient(135deg, rgba(0, 183, 195, 0.05) 0%, rgba(0, 212, 161, 0.05) 100%);
+            border-left: 4px solid #00B7C3;
+            border-radius: 12px;
+            padding: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .topic-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0, 183, 195, 0.1) 0%, rgba(0, 212, 161, 0.1) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .topic-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0, 183, 195, 0.2);
+        }
+
+        .topic-card:hover::before {
+            opacity: 1;
+        }
+
+        .topic-card:nth-child(2) {
+            border-left-color: #00BCF2;
+        }
+
+        .topic-card:nth-child(3) {
+            border-left-color: #00D4A1;
+        }
+
+        .topic-card:nth-child(4) {
+            border-left-color: #10A19D;
+        }
+
+        .topic-number {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #00B7C3 0%, #00D4A1 100%);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .topic-title {
+            color: #0078D4;
+            font-size: 1.3em;
+            font-weight: 600;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .topic-description {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .topic-link {
+            display: inline-block;
+            color: #00B7C3;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 8px 16px;
+            background: rgba(0, 183, 195, 0.1);
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .topic-link:hover {
+            background: linear-gradient(135deg, #00B7C3 0%, #00D4A1 100%);
+            color: white;
+            transform: translateX(5px);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            color: white;
+            font-size: 0.9em;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .back-link {
+            display: inline-block;
+            color: #106EBE;
+            text-decoration: none;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+            transition: color 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: #00B7C3;
+            text-decoration: underline;
+        }
+
+        .back-link::before {
+            content: '← ';
+        }
+
+        @media (max-width: 768px) {
+            .logo-text {
+                font-size: 1.8em;
+            }
+
+            .meetup-name {
+                font-size: 1.1em;
+            }
+
+            header, .content-wrapper {
+                padding: 25px;
+            }
+
+            h1 {
+                font-size: 1.5em;
+            }
+
+            .topic-card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <a href="index.html" class="back-link">Back to Archive</a>
+                <div class="logo-text">Can't Miss List</div>
+                <div class="meetup-name">St. Louis Microsoft Fabric / Power BI Meetup</div>
+                <a href="https://www.meetup.com/saint-louis-microsoft-fabric-power-bi-meetup-group/" 
+                   class="meetup-link" 
+                   target="_blank" 
+                   rel="noopener noreferrer">
+                    Visit Our Meetup Group →
+                </a>
+                <div class="date-badge">December 2025 Edition</div>
+            </div>
+        </header>
+
+        <div class="content-wrapper">
+            <h1>🎯 This Month's Can't Miss Updates</h1>
+            
+            <div class="topics-grid">
+                <div class="topic-card">
+                    <div class="topic-number">1</div>
+                    <h2 class="topic-title">New Capabilities in Fabric Git Integration</h2>
+                    <p class="topic-description">
+                        Exciting enhancements to Fabric's Git integration bring improved collaboration workflows, 
+                        better version control, and streamlined deployment processes. These new capabilities make 
+                        it easier than ever to manage your Fabric workspaces with enterprise-grade source control.
+                    </p>
+                    <a href="https://www.reddit.com/r/MicrosoftFabric/comments/1poqiiq/new_capabilities_in_fabric_git_integration/" 
+                       class="topic-link" 
+                       target="_blank" 
+                       rel="noopener noreferrer">
+                        Read More →
+                    </a>
+                </div>
+
+                <div class="topic-card">
+                    <div class="topic-number">2</div>
+                    <h2 class="topic-title">PBIR Becomes Default Report Format</h2>
+                    <p class="topic-description">
+                        Starting next month, PBIR (Power BI Report) will become the default format for Power BI reports. 
+                        This transition brings enhanced collaboration capabilities, better integration with version control, 
+                        and improved developer experiences. Get ready for this important change!
+                    </p>
+                    <a href="https://powerbi.microsoft.com/en-us/blog/pbir-will-become-the-default-power-bi-report-format-get-ready-for-the-transition/" 
+                       class="topic-link" 
+                       target="_blank" 
+                       rel="noopener noreferrer">
+                        Read More →
+                    </a>
+                </div>
+
+                <div class="topic-card">
+                    <div class="topic-number">3</div>
+                    <h2 class="topic-title">Excel Drillthrough for DirectQuery & Direct Lake</h2>
+                    <p class="topic-description">
+                        A game-changing update that enables Excel drillthrough capabilities for both DirectQuery and 
+                        Direct Lake models. This feature empowers users to analyze data directly in Excel while 
+                        maintaining real-time connections to their data sources, combining Excel's familiarity with 
+                        Power BI's powerful data models.
+                    </p>
+                    <a href="https://powerbi.microsoft.com/en-us/blog/drillthrough-in-excel-now-supported-for-direct-lake-and-directquery-models/" 
+                       class="topic-link" 
+                       target="_blank" 
+                       rel="noopener noreferrer">
+                        Read More →
+                    </a>
+                </div>
+
+                <div class="topic-card">
+                    <div class="topic-number">4</div>
+                    <h2 class="topic-title">Power BI Controller for PowerPoint</h2>
+                    <p class="topic-description">
+                        Introducing the new Power BI Controller add-in for PowerPoint! This preview feature streamlines 
+                        storytelling with bulk operations, making it easier to manage multiple Power BI visuals within 
+                        your presentations. Update, refresh, and control all your Power BI content efficiently in one place.
+                    </p>
+                    <a href="https://powerbi.microsoft.com/en-us/blog/introducing-power-bi-controller-streamlining-storytelling-with-bulk-operations-preview/" 
+                       class="topic-link" 
+                       target="_blank" 
+                       rel="noopener noreferrer">
+                        Read More →
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>
+                💜 Curated with love for the 
+                <a href="https://www.meetup.com/saint-louis-microsoft-fabric-power-bi-meetup-group/" 
+                   target="_blank" 
+                   rel="noopener noreferrer">
+                    St. Louis Microsoft Fabric / Power BI Community
+                </a>
+            </p>
+        </footer>
+    </div>
+</body>
+</html>

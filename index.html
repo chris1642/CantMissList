@@ -65,15 +65,13 @@
             text-decoration: underline;
         }
 
-        .date-badge {
-            display: inline-block;
-            background: linear-gradient(135deg, #00B7C3 0%, #00D4A1 100%);
-            color: white;
-            padding: 8px 20px;
-            border-radius: 20px;
-            font-size: 0.9em;
-            font-weight: 600;
+        .subtitle {
+            color: #555;
+            font-size: 1.1em;
             margin-top: 15px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .content-wrapper {
@@ -81,96 +79,120 @@
             border-radius: 16px;
             padding: 40px;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
         }
 
         h1 {
             color: #0078D4;
             font-size: 2em;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             text-align: center;
         }
 
-        .topics-grid {
-            display: grid;
-            gap: 25px;
+        .description {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: 1.05em;
         }
 
-        .topic-card {
-            background: linear-gradient(135deg, rgba(0, 183, 195, 0.05) 0%, rgba(0, 212, 161, 0.05) 100%);
+        .current-month {
+            background: linear-gradient(135deg, rgba(0, 183, 195, 0.1) 0%, rgba(0, 212, 161, 0.1) 100%);
             border-left: 4px solid #00B7C3;
             border-radius: 12px;
-            padding: 25px;
+            padding: 30px;
+            margin-bottom: 40px;
             transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
         }
 
-        .topic-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(0, 183, 195, 0.1) 0%, rgba(0, 212, 161, 0.1) 100%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .topic-card:hover {
+        .current-month:hover {
             transform: translateY(-5px);
             box-shadow: 0 12px 24px rgba(0, 183, 195, 0.2);
         }
 
-        .topic-card:hover::before {
-            opacity: 1;
-        }
-
-        .topic-card:nth-child(2) {
-            border-left-color: #00BCF2;
-        }
-
-        .topic-card:nth-child(3) {
-            border-left-color: #00D4A1;
-        }
-
-        .topic-card:nth-child(4) {
-            border-left-color: #10A19D;
-        }
-
-        .topic-number {
+        .current-badge {
             display: inline-block;
-            width: 40px;
-            height: 40px;
             background: linear-gradient(135deg, #00B7C3 0%, #00D4A1 100%);
             color: white;
-            border-radius: 50%;
-            text-align: center;
-            line-height: 40px;
-            font-weight: 700;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
             margin-bottom: 15px;
-            position: relative;
-            z-index: 1;
         }
 
-        .topic-title {
+        .month-title {
             color: #0078D4;
-            font-size: 1.3em;
+            font-size: 1.5em;
             font-weight: 600;
             margin-bottom: 10px;
-            position: relative;
-            z-index: 1;
         }
 
-        .topic-description {
+        .month-description {
             color: #555;
             line-height: 1.6;
             margin-bottom: 15px;
-            position: relative;
-            z-index: 1;
         }
 
-        .topic-link {
+        .month-link {
+            display: inline-block;
+            color: white;
+            background: linear-gradient(135deg, #00B7C3 0%, #00D4A1 100%);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 12px 24px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .month-link:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 12px rgba(0, 183, 195, 0.3);
+        }
+
+        h2 {
+            color: #0078D4;
+            font-size: 1.6em;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .archive-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .archive-card {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 25px;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .archive-card:hover {
+            border-color: #00B7C3;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 183, 195, 0.15);
+        }
+
+        .archive-month {
+            color: #0078D4;
+            font-size: 1.2em;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .archive-date {
+            color: #888;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+        }
+
+        .archive-link {
             display: inline-block;
             color: #00B7C3;
             text-decoration: none;
@@ -179,14 +201,11 @@
             background: rgba(0, 183, 195, 0.1);
             border-radius: 6px;
             transition: all 0.3s ease;
-            position: relative;
-            z-index: 1;
         }
 
-        .topic-link:hover {
+        .archive-link:hover {
             background: linear-gradient(135deg, #00B7C3 0%, #00D4A1 100%);
             color: white;
-            transform: translateX(5px);
         }
 
         footer {
@@ -224,8 +243,12 @@
                 font-size: 1.5em;
             }
 
-            .topic-card {
-                padding: 20px;
+            h2 {
+                font-size: 1.3em;
+            }
+
+            .archive-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -242,78 +265,45 @@
                    rel="noopener noreferrer">
                     Visit Our Meetup Group →
                 </a>
-                <div class="date-badge">December 2025 Edition</div>
+                <div class="subtitle">
+                    A monthly curated list of important updates in the Microsoft Fabric and Power BI ecosystem
+                </div>
             </div>
         </header>
 
         <div class="content-wrapper">
-            <h1>🎯 This Month's Can't Miss Updates</h1>
+            <h1>📚 Welcome to the Can't Miss List Archive</h1>
             
-            <div class="topics-grid">
-                <div class="topic-card">
-                    <div class="topic-number">1</div>
-                    <h2 class="topic-title">New Capabilities in Fabric Git Integration</h2>
-                    <p class="topic-description">
-                        Exciting enhancements to Fabric's Git integration bring improved collaboration workflows, 
-                        better version control, and streamlined deployment processes. These new capabilities make 
-                        it easier than ever to manage your Fabric workspaces with enterprise-grade source control.
-                    </p>
-                    <a href="https://www.reddit.com/r/MicrosoftFabric/comments/1poqiiq/new_capabilities_in_fabric_git_integration/" 
-                       class="topic-link" 
-                       target="_blank" 
-                       rel="noopener noreferrer">
-                        Read More →
-                    </a>
-                </div>
+            <p class="description">
+                Every month, we curate the most important updates and announcements in the Microsoft Fabric 
+                and Power BI ecosystem. Browse our current and past editions to stay up-to-date with the 
+                latest developments.
+            </p>
 
-                <div class="topic-card">
-                    <div class="topic-number">2</div>
-                    <h2 class="topic-title">PBIR Becomes Default Report Format</h2>
-                    <p class="topic-description">
-                        Starting next month, PBIR (Power BI Report) will become the default format for Power BI reports. 
-                        This transition brings enhanced collaboration capabilities, better integration with version control, 
-                        and improved developer experiences. Get ready for this important change!
-                    </p>
-                    <a href="https://powerbi.microsoft.com/en-us/blog/pbir-will-become-the-default-power-bi-report-format-get-ready-for-the-transition/" 
-                       class="topic-link" 
-                       target="_blank" 
-                       rel="noopener noreferrer">
-                        Read More →
-                    </a>
-                </div>
+            <div class="current-month">
+                <div class="current-badge">⭐ Current Month</div>
+                <h3 class="month-title">December 2025</h3>
+                <p class="month-description">
+                    Discover this month's top updates including new Fabric Git integration capabilities, 
+                    PBIR becoming the default report format, Excel Drillthrough for DirectQuery & Direct Lake, 
+                    and the new Power BI Controller for PowerPoint.
+                </p>
+                <a href="december-2025.html" class="month-link">
+                    View December 2025 Edition →
+                </a>
+            </div>
 
-                <div class="topic-card">
-                    <div class="topic-number">3</div>
-                    <h2 class="topic-title">Excel Drillthrough for DirectQuery & Direct Lake</h2>
-                    <p class="topic-description">
-                        A game-changing update that enables Excel drillthrough capabilities for both DirectQuery and 
-                        Direct Lake models. This feature empowers users to analyze data directly in Excel while 
-                        maintaining real-time connections to their data sources, combining Excel's familiarity with 
-                        Power BI's powerful data models.
-                    </p>
-                    <a href="https://powerbi.microsoft.com/en-us/blog/drillthrough-in-excel-now-supported-for-direct-lake-and-directquery-models/" 
-                       class="topic-link" 
-                       target="_blank" 
-                       rel="noopener noreferrer">
-                        Read More →
+            <h2>📅 Archive</h2>
+            
+            <div class="archive-grid">
+                <div class="archive-card">
+                    <div class="archive-month">December 2025</div>
+                    <div class="archive-date">Latest Edition</div>
+                    <a href="december-2025.html" class="archive-link">
+                        View Archive →
                     </a>
                 </div>
-
-                <div class="topic-card">
-                    <div class="topic-number">4</div>
-                    <h2 class="topic-title">Power BI Controller for PowerPoint</h2>
-                    <p class="topic-description">
-                        Introducing the new Power BI Controller add-in for PowerPoint! This preview feature streamlines 
-                        storytelling with bulk operations, making it easier to manage multiple Power BI visuals within 
-                        your presentations. Update, refresh, and control all your Power BI content efficiently in one place.
-                    </p>
-                    <a href="https://powerbi.microsoft.com/en-us/blog/introducing-power-bi-controller-streamlining-storytelling-with-bulk-operations-preview/" 
-                       class="topic-link" 
-                       target="_blank" 
-                       rel="noopener noreferrer">
-                        Read More →
-                    </a>
-                </div>
+                <!-- Future monthly archives will be added here -->
             </div>
         </div>
 
