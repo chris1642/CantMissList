@@ -15,15 +15,16 @@ Simply open `index.html` in your web browser to access the main archive page, or
 ## Archive Structure
 
 - **index.html** - Main landing page with links to all monthly archives
-- **december-2025.html** - December 2025 edition
-- Future monthly editions will be added as new HTML files (e.g., `january-2026.html`, `february-2026.html`, etc.)
+- **january-2026.html** - January 2026 edition (current)
+- **december-2025.html** - December 2025 edition (archived)
+- Future monthly editions will be added as new HTML files (e.g., `february-2026.html`, `march-2026.html`, etc.)
 
-## Current Month's Topics (December 2025)
+## Current Month's Topics (January 2026)
 
-- New capabilities in Fabric Git integration
-- PBIR becoming the default Power BI report format
-- Excel Drillthrough for DirectQuery and Direct Lake models
-- New Power BI Controller add-in for PowerPoint
+- T-SQL magic command in Fabric Python notebooks
+- Service Principal support for Fabric item creation (Fabric-Prefab)
+- SharePoint CSV shortcuts with file transformations
+- New refresh options in Power BI Desktop (data only, schema only, or both)
 
 ## Design
 
