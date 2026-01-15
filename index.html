@@ -291,30 +291,11 @@
                 latest developments.
             </p>
 
-            <div class="current-month">
-                <div class="current-badge">⭐ Current Month</div>
-                <h3 class="month-title">January 2026</h3>
-                <p class="month-description">
-                    Discover this month's top updates including T-SQL magic commands in Fabric notebooks, 
-                    Service Principal support for Fabric item creation, SharePoint CSV shortcuts with file transformations, 
-                    and new refresh options in Power BI Desktop.
-                </p>
-                <a href="january-2026.html" class="month-link">
-                    View January 2026 Edition →
-                </a>
-            </div>
+            <div id="current-month-container"></div>
 
             <h2>📅 Archive</h2>
             
-            <div class="archive-grid">
-                <div class="archive-card">
-                    <div class="archive-month">December 2025</div>
-                    <div class="archive-date">Published December 2025</div>
-                    <a href="december-2025.html" class="archive-link">
-                        View Edition →
-                    </a>
-                </div>
-            </div>
+            <div id="archive-grid" class="archive-grid"></div>
         </div>
 
         <footer>
@@ -328,5 +309,66 @@
             </p>
         </footer>
     </div>
+    <script>
+        // Load monthly items from JSON
+        fetch('monthly-items.json')
+            .then(response => response.json())
+            .then(data => {
+                if (data.length === 0) return;
+                
+                // Current month (first item in array)
+                const currentMonth = data[0];
+                const currentMonthContainer = document.getElementById('current-month-container');
+                
+                // Create summary description from items
+                const summary = currentMonth.items.slice(0, 3).map(item => item.title).join(', ');
+                const summaryText = currentMonth.items.length > 3 
+                    ? summary + ', and more' 
+                    : summary;
+                
+                currentMonthContainer.innerHTML = `
+                    <div class="current-month">
+                        <div class="current-badge">⭐ Current Month</div>
+                        <h3 class="month-title">${currentMonth.month}</h3>
+                        <p class="month-description">
+                            Discover this month's top updates including ${summaryText}.
+                        </p>
+                        <a href="month.html?month=${encodeURIComponent(currentMonth.month)}" class="month-link">
+                            View ${currentMonth.month} Edition →
+                        </a>
+                    </div>
+                `;
+                
+                // Archive months (all except current)
+                const archiveGrid = document.getElementById('archive-grid');
+                const archiveMonths = data.slice(1);
+                
+                if (archiveMonths.length === 0) {
+                    archiveGrid.innerHTML = `
+                        <div class="archive-card empty-archive-card">
+                            <div class="archive-month empty-archive-title">No archived editions yet</div>
+                        </div>
+                    `;
+                } else {
+                    archiveGrid.innerHTML = archiveMonths.map(monthData => `
+                        <div class="archive-card">
+                            <div class="archive-month">${monthData.month}</div>
+                            <div class="archive-date">Published ${monthData.month}</div>
+                            <a href="month.html?month=${encodeURIComponent(monthData.month)}" class="archive-link">
+                                View Edition →
+                            </a>
+                        </div>
+                    `).join('');
+                }
+            })
+            .catch(error => {
+                console.error('Error loading monthly items:', error);
+                document.getElementById('current-month-container').innerHTML = `
+                    <div class="current-month">
+                        <p style="color: #d32f2f;">Unable to load monthly items. Please try again later.</p>
+                    </div>
+                `;
+            });
+    </script>
 </body>
 </html>

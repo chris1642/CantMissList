@@ -1,0 +1,52 @@
+[
+  {
+    "month": "January 2026",
+    "items": [
+      {
+        "title": "T-SQL Magic Command in Fabric Notebooks",
+        "description": "A game-changing feature that allows you to write T-SQL directly in Fabric Python notebooks! This new capability lets you query AND write data within a Fabric notebook, seamlessly combining the power of SQL and Python in a single environment. Perfect for data engineers who want the flexibility of both languages without switching contexts.",
+        "url": "https://learn.microsoft.com/en-us/fabric/data-engineering/tsql-magic-command-notebook"
+      },
+      {
+        "title": "Fabric-Prefab: Service Principal Item Creation",
+        "description": "A community-created solution that enables Service Principals to create Fabric items. This is crucial for enterprise environments: when users create Fabric items and leave the organization, failure to reassign ownership can cause significant issues. With Fabric-Prefab, ownership belongs to the Service Principal, eliminating these headaches and ensuring continuity.",
+        "url": "https://github.com/imtkain/Fabric-Prefab"
+      },
+      {
+        "title": "SharePoint CSV Shortcuts with File Transformations",
+        "description": "Use Shortcuts to low-code and near-instantly write a SharePoint folder of CSVs into a Lakehouse for Power BI. This feature takes the heavy work away from Power BI's Power Query and delivers data directly from a Lakehouse, making your solutions scalable and performant. Transform and load data with minimal effort!",
+        "url": "https://learn.microsoft.com/en-us/fabric/onelake/shortcuts-file-transformations/transformations"
+      },
+      {
+        "title": "New Refresh Options in Power BI Desktop",
+        "description": "In case you missed it, Power BI Desktop now offers granular refresh options! You can now choose between refreshing data only, schema only, or both schema and data. This is especially important when you don't want to bring in new columns to your model yet, giving you precise control over your data model updates and development workflow.",
+        "url": "https://powerbi.microsoft.com/en-us/blog/power-bi-september-2025-feature-summary/#post-30998-_Toc208591575"
+      }
+    ]
+  },
+  {
+    "month": "December 2025",
+    "items": [
+      {
+        "title": "New Capabilities in Fabric Git Integration",
+        "description": "Exciting enhancements to Fabric's Git integration bring improved collaboration workflows, better version control, and streamlined deployment processes. These new capabilities make it easier than ever to manage your Fabric workspaces with enterprise-grade source control.",
+        "url": "https://www.reddit.com/r/MicrosoftFabric/comments/1poqiiq/new_capabilities_in_fabric_git_integration/"
+      },
+      {
+        "title": "PBIR Becomes Default Report Format",
+        "description": "Starting next month, PBIR (Power BI Report) will become the default format for Power BI reports. This transition brings enhanced collaboration capabilities, better integration with version control, and improved developer experiences. Get ready for this important change!",
+        "url": "https://powerbi.microsoft.com/en-us/blog/pbir-will-become-the-default-power-bi-report-format-get-ready-for-the-transition/"
+      },
+      {
+        "title": "Excel Drillthrough for DirectQuery & Direct Lake",
+        "description": "A game-changing update that enables Excel drillthrough capabilities for both DirectQuery and Direct Lake models. This feature empowers users to analyze data directly in Excel while maintaining real-time connections to their data sources, combining Excel's familiarity with Power BI's powerful data models.",
+        "url": "https://powerbi.microsoft.com/en-us/blog/drillthrough-in-excel-now-supported-for-direct-lake-and-directquery-models/"
+      },
+      {
+        "title": "Power BI Controller for PowerPoint",
+        "description": "Introducing the new Power BI Controller add-in for PowerPoint! This preview feature streamlines storytelling with bulk operations, making it easier to manage multiple Power BI visuals within your presentations. Update, refresh, and control all your Power BI content efficiently in one place.",
+        "url": "https://powerbi.microsoft.com/en-us/blog/introducing-power-bi-controller-streamlining-storytelling-with-bulk-operations-preview/"
+      }
+    ]
+  }
+]
