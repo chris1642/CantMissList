@@ -76,6 +76,42 @@
             margin-top: 15px;
         }
 
+        .month-switcher {
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .month-switcher label {
+            color: #0078D4;
+            font-weight: 600;
+        }
+
+        .month-switcher select {
+            padding: 8px 16px;
+            border: 2px solid #00B7C3;
+            border-radius: 8px;
+            background: white;
+            color: #333;
+            font-size: 0.95em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .month-switcher select:hover {
+            border-color: #00D4A1;
+            box-shadow: 0 2px 8px rgba(0, 183, 195, 0.2);
+        }
+
+        .month-switcher select:focus {
+            outline: none;
+            border-color: #00D4A1;
+            box-shadow: 0 0 0 3px rgba(0, 212, 161, 0.2);
+        }
+
         .content-wrapper {
             background: rgba(255, 255, 255, 0.98);
             border-radius: 16px;
@@ -227,6 +263,12 @@
             content: '← ';
         }
 
+        .error-message {
+            text-align: center;
+            padding: 40px;
+            color: #d32f2f;
+        }
+
         @media (max-width: 768px) {
             .logo-text {
                 font-size: 1.8em;
@@ -247,6 +289,11 @@
             .topic-card {
                 padding: 20px;
             }
+
+            .month-switcher {
+                flex-direction: column;
+                gap: 10px;
+            }
         }
     </style>
 </head>
@@ -263,81 +310,21 @@
                    rel="noopener noreferrer">
                     Visit Our Meetup Group →
                 </a>
-                <div class="date-badge">January 2026 Edition</div>
+                <div id="date-badge" class="date-badge">Loading...</div>
+                <div class="month-switcher">
+                    <label for="month-select">Select Month:</label>
+                    <select id="month-select">
+                        <option value="">Loading...</option>
+                    </select>
+                </div>
             </div>
         </header>
 
         <div class="content-wrapper">
             <h1>🎯 This Month's Can't Miss Updates</h1>
             
-            <div class="topics-grid">
-                <div class="topic-card">
-                    <div class="topic-number">1</div>
-                    <h2 class="topic-title">T-SQL Magic Command in Fabric Notebooks</h2>
-                    <p class="topic-description">
-                        A game-changing feature that allows you to write T-SQL directly in Fabric Python notebooks! 
-                        This new capability lets you query AND write data within a Fabric notebook, seamlessly 
-                        combining the power of SQL and Python in a single environment. Perfect for data engineers 
-                        who want the flexibility of both languages without switching contexts.
-                    </p>
-                    <a href="https://learn.microsoft.com/en-us/fabric/data-engineering/tsql-magic-command-notebook" 
-                       class="topic-link" 
-                       target="_blank" 
-                       rel="noopener noreferrer">
-                        Learn More →
-                    </a>
-                </div>
-
-                <div class="topic-card">
-                    <div class="topic-number">2</div>
-                    <h2 class="topic-title">Fabric-Prefab: Service Principal Item Creation</h2>
-                    <p class="topic-description">
-                        A community-created solution that enables Service Principals to create Fabric items. This is 
-                        crucial for enterprise environments: when users create Fabric items and leave the organization, 
-                        failure to reassign ownership can cause significant issues. With Fabric-Prefab, ownership 
-                        belongs to the Service Principal, eliminating these headaches and ensuring continuity.
-                    </p>
-                    <a href="https://github.com/imtkain/Fabric-Prefab" 
-                       class="topic-link" 
-                       target="_blank" 
-                       rel="noopener noreferrer">
-                        GitHub Repository →
-                    </a>
-                </div>
-
-                <div class="topic-card">
-                    <div class="topic-number">3</div>
-                    <h2 class="topic-title">SharePoint CSV Shortcuts with File Transformations</h2>
-                    <p class="topic-description">
-                        Use Shortcuts to low-code and near-instantly write a SharePoint folder of CSVs into a Lakehouse 
-                        for Power BI. This feature takes the heavy work away from Power BI's Power Query and delivers 
-                        data directly from a Lakehouse, making your solutions scalable and performant. Transform and 
-                        load data with minimal effort!
-                    </p>
-                    <a href="https://learn.microsoft.com/en-us/fabric/onelake/shortcuts-file-transformations/transformations" 
-                       class="topic-link" 
-                       target="_blank" 
-                       rel="noopener noreferrer">
-                        Learn More →
-                    </a>
-                </div>
-
-                <div class="topic-card">
-                    <div class="topic-number">4</div>
-                    <h2 class="topic-title">New Refresh Options in Power BI Desktop</h2>
-                    <p class="topic-description">
-                        In case you missed it, Power BI Desktop now offers granular refresh options! You can now choose 
-                        between refreshing data only, schema only, or both schema and data. This is especially important 
-                        when you don't want to bring in new columns to your model yet, giving you precise control over 
-                        your data model updates and development workflow.
-                    </p>
-                    <a href="https://powerbi.microsoft.com/en-us/blog/power-bi-september-2025-feature-summary/#post-30998-_Toc208591575" 
-                       class="topic-link" 
-                       target="_blank" 
-                       rel="noopener noreferrer">
-                        Read More →
-                    </a>
-                </div>
+            <div id="topics-grid" class="topics-grid">
+                <div class="error-message">Loading monthly items...</div>
             </div>
         </div>
 
@@ -352,5 +339,87 @@
             </p>
         </footer>
     </div>
+    <script>
+        // HTML escape function to prevent XSS
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // Get month from URL parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        let selectedMonth = urlParams.get('month');
+
+        // Load and display monthly items
+        fetch('monthly-items.json')
+            .then(response => {
+                if (!response.ok) throw new Error('Failed to load monthly items');
+                return response.json();
+            })
+            .then(data => {
+                if (data.length === 0) {
+                    document.getElementById('topics-grid').innerHTML = `
+                        <div class="error-message">No monthly items available.</div>
+                    `;
+                    return;
+                }
+
+                // If no month selected, use the first (current) month
+                if (!selectedMonth) {
+                    selectedMonth = data[0].month;
+                }
+
+                // Populate month selector
+                const monthSelect = document.getElementById('month-select');
+                monthSelect.innerHTML = data.map(monthData => 
+                    `<option value="${escapeHtml(monthData.month)}" ${monthData.month === selectedMonth ? 'selected' : ''}>
+                        ${escapeHtml(monthData.month)}
+                    </option>`
+                ).join('');
+
+                // Add change listener to month selector
+                monthSelect.addEventListener('change', (e) => {
+                    const newMonth = e.target.value;
+                    window.location.href = `month.html?month=${encodeURIComponent(newMonth)}`;
+                });
+
+                // Find and display selected month
+                const monthData = data.find(m => m.month === selectedMonth);
+                if (!monthData) {
+                    document.getElementById('topics-grid').innerHTML = `
+                        <div class="error-message">Selected month not found.</div>
+                    `;
+                    return;
+                }
+
+                // Update date badge
+                document.getElementById('date-badge').textContent = `${monthData.month} Edition`;
+
+                // Display topics
+                const topicsGrid = document.getElementById('topics-grid');
+                topicsGrid.innerHTML = monthData.items.map((item, index) => `
+                    <div class="topic-card">
+                        <div class="topic-number">${index + 1}</div>
+                        <h2 class="topic-title">${escapeHtml(item.title)}</h2>
+                        <p class="topic-description">${escapeHtml(item.description)}</p>
+                        <a href="${escapeHtml(item.url)}" 
+                           class="topic-link" 
+                           target="_blank" 
+                           rel="noopener noreferrer">
+                            Learn More →
+                        </a>
+                    </div>
+                `).join('');
+            })
+            .catch(error => {
+                console.error('Error loading monthly items:', error);
+                document.getElementById('topics-grid').innerHTML = `
+                    <div class="error-message">
+                        Unable to load monthly items. Please try again later.
+                    </div>
+                `;
+            });
+    </script>
 </body>
 </html>

@@ -15,9 +15,20 @@ Simply open `index.html` in your web browser to access the main archive page, or
 ## Archive Structure
 
 - **index.html** - Main landing page with links to all monthly archives
-- **january-2026.html** - January 2026 edition (current)
-- **december-2025.html** - December 2025 edition (archived)
-- Future monthly editions will be added as new HTML files (e.g., `february-2026.html`, `march-2026.html`, etc.)
+- **month.html** - Dynamic monthly view page with month switcher
+- **monthly-items.json** - JSON data file containing all monthly content with keys: month, title, description, url
+
+Adding new monthly editions is now as simple as adding a new entry to the `monthly-items.json` file - no need to create new HTML files!
+
+## How It Works
+
+The website now uses a JSON-based system to manage monthly content efficiently:
+
+1. **monthly-items.json** - Contains all monthly data in a structured format
+2. **index.html** - Dynamically loads and displays the current month and archive
+3. **month.html** - Shows individual month content with a dropdown switcher to navigate between months
+
+This approach significantly reduces AI resource usage when adding new monthly editions - simply update the JSON file instead of creating new HTML pages!
 
 ## Current Month's Topics (January 2026)
 
