@@ -317,9 +317,15 @@
             return div.innerHTML;
         }
 
+        // Constants
+        const MAX_SUMMARY_ITEMS = 3;
+
         // Load monthly items from JSON
         fetch('monthly-items.json')
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) throw new Error('Failed to load monthly items');
+                return response.json();
+            })
             .then(data => {
                 if (data.length === 0) return;
                 
@@ -328,8 +334,8 @@
                 const currentMonthContainer = document.getElementById('current-month-container');
                 
                 // Create summary description from items
-                const summary = currentMonth.items.slice(0, 3).map(item => escapeHtml(item.title)).join(', ');
-                const summaryText = currentMonth.items.length > 3 
+                const summary = currentMonth.items.slice(0, MAX_SUMMARY_ITEMS).map(item => escapeHtml(item.title)).join(', ');
+                const summaryText = currentMonth.items.length > MAX_SUMMARY_ITEMS 
                     ? summary + ', and more' 
                     : summary;
                 

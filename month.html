@@ -353,7 +353,10 @@
 
         // Load and display monthly items
         fetch('monthly-items.json')
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) throw new Error('Failed to load monthly items');
+                return response.json();
+            })
             .then(data => {
                 if (data.length === 0) {
                     document.getElementById('topics-grid').innerHTML = `
