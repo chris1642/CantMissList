@@ -340,6 +340,13 @@
         </footer>
     </div>
     <script>
+        // HTML escape function to prevent XSS
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
         // Get month from URL parameter
         const urlParams = new URLSearchParams(window.location.search);
         let selectedMonth = urlParams.get('month');
@@ -363,8 +370,8 @@
                 // Populate month selector
                 const monthSelect = document.getElementById('month-select');
                 monthSelect.innerHTML = data.map(monthData => 
-                    `<option value="${monthData.month}" ${monthData.month === selectedMonth ? 'selected' : ''}>
-                        ${monthData.month}
+                    `<option value="${escapeHtml(monthData.month)}" ${monthData.month === selectedMonth ? 'selected' : ''}>
+                        ${escapeHtml(monthData.month)}
                     </option>`
                 ).join('');
 
@@ -391,9 +398,9 @@
                 topicsGrid.innerHTML = monthData.items.map((item, index) => `
                     <div class="topic-card">
                         <div class="topic-number">${index + 1}</div>
-                        <h2 class="topic-title">${item.title}</h2>
-                        <p class="topic-description">${item.description}</p>
-                        <a href="${item.url}" 
+                        <h2 class="topic-title">${escapeHtml(item.title)}</h2>
+                        <p class="topic-description">${escapeHtml(item.description)}</p>
+                        <a href="${escapeHtml(item.url)}" 
                            class="topic-link" 
                            target="_blank" 
                            rel="noopener noreferrer">

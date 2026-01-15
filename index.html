@@ -310,6 +310,13 @@
         </footer>
     </div>
     <script>
+        // HTML escape function to prevent XSS
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
         // Load monthly items from JSON
         fetch('monthly-items.json')
             .then(response => response.json())
@@ -321,7 +328,7 @@
                 const currentMonthContainer = document.getElementById('current-month-container');
                 
                 // Create summary description from items
-                const summary = currentMonth.items.slice(0, 3).map(item => item.title).join(', ');
+                const summary = currentMonth.items.slice(0, 3).map(item => escapeHtml(item.title)).join(', ');
                 const summaryText = currentMonth.items.length > 3 
                     ? summary + ', and more' 
                     : summary;
@@ -329,12 +336,12 @@
                 currentMonthContainer.innerHTML = `
                     <div class="current-month">
                         <div class="current-badge">⭐ Current Month</div>
-                        <h3 class="month-title">${currentMonth.month}</h3>
+                        <h3 class="month-title">${escapeHtml(currentMonth.month)}</h3>
                         <p class="month-description">
                             Discover this month's top updates including ${summaryText}.
                         </p>
                         <a href="month.html?month=${encodeURIComponent(currentMonth.month)}" class="month-link">
-                            View ${currentMonth.month} Edition →
+                            View ${escapeHtml(currentMonth.month)} Edition →
                         </a>
                     </div>
                 `;
@@ -352,8 +359,8 @@
                 } else {
                     archiveGrid.innerHTML = archiveMonths.map(monthData => `
                         <div class="archive-card">
-                            <div class="archive-month">${monthData.month}</div>
-                            <div class="archive-date">Published ${monthData.month}</div>
+                            <div class="archive-month">${escapeHtml(monthData.month)}</div>
+                            <div class="archive-date">Published ${escapeHtml(monthData.month)}</div>
                             <a href="month.html?month=${encodeURIComponent(monthData.month)}" class="archive-link">
                                 View Edition →
                             </a>
