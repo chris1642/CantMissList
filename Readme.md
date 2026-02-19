@@ -10,7 +10,7 @@ This website showcases the latest and most important updates in the Microsoft Fa
 
 ## Viewing the Website
 
-Simply open `index.html` in your web browser to access the main archive page, or visit the GitHub Pages URL once deployed. From there, you can navigate to any monthly edition.
+View here, deployed through Github Pages: https://besmarterwithdata.github.io/STLDataCantMissList/
 
 ## Archive Structure
 
