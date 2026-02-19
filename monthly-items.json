@@ -1,5 +1,25 @@
 [
   {
+    "month": "February 2026",
+    "items": [
+      {
+        "title": "Semantic Link Generally Available",
+        "description": "Semantic Link is now generally available! This is the foundation for Semantic Link Labs and opens the door for automating, getting insights, and almost anything from Models to Reports to Lakehouses to Permissions. Supercharge your AI, BI, and data engineering workflows with this powerful new capability.",
+        "url": "https://blog.fabric.microsoft.com/en-us/blog/supercharge-ai-bi-and-data-engineering-with-semantic-link-generally-available?ft=All"
+      },
+      {
+        "title": "Fabric Essentials Listings",
+        "description": "A comprehensive website that hosts local community tools and Microsoft official tools available on GitHub. These tools really help extend both Power BI and Fabric abilities, providing a centralized hub for discovering and leveraging community-driven innovations and official enhancements.",
+        "url": "https://fabricessentials.github.io/"
+      },
+      {
+        "title": "GitHub Copilot Agent Mode",
+        "description": "A game changer in going from a chat-style AI to context-based direct file changes and work. Free for anyone and works both in GitHub online and VS Code. The agent awakens to transform how you code, offering intelligent, contextual assistance that directly modifies files and accelerates development workflows.",
+        "url": "https://github.blog/news-insights/product-news/github-copilot-the-agent-awakens/"
+      }
+    ]
+  },
+  {
     "month": "January 2026",
     "items": [
       {
