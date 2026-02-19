@@ -19,7 +19,7 @@
       },
       {
         "title": "Fabric CI/CD Deployment is here!",
-        "description": "Pending - just added!",
+        "description": "Code-first solution to deploying items from Github, DevOps, etc into your environment",
         "url": "https://blog.fabric.microsoft.com/en-us/blog/introducing-fabric-cicd-deployment-tool/"
       }
     ]
