@@ -30,12 +30,11 @@ The website now uses a JSON-based system to manage monthly content efficiently:
 
 This approach significantly reduces AI resource usage when adding new monthly editions - simply update the JSON file instead of creating new HTML pages!
 
-## Current Month's Topics (January 2026)
+## Current Month's Topics (February 2026)
 
-- T-SQL magic command in Fabric Python notebooks
-- Service Principal support for Fabric item creation (Fabric-Prefab)
-- SharePoint CSV shortcuts with file transformations
-- New refresh options in Power BI Desktop (data only, schema only, or both)
+- Semantic Link Generally Available - foundation for automating and getting insights across Models, Reports, Lakehouses, and Permissions
+- Fabric Essentials Listings - centralized hub for community and Microsoft tools on GitHub
+- GitHub Copilot Agent Mode - context-based direct file changes and work, free for everyone
 
 ## Design
 
