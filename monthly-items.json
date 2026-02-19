@@ -16,6 +16,11 @@
         "title": "GitHub Copilot Agent Mode",
         "description": "A game changer in going from a chat-style AI to context-based direct file changes and work. Free for anyone and works both in GitHub online and VS Code. The agent awakens to transform how you code, offering intelligent, contextual assistance that directly modifies files and accelerates development workflows.",
         "url": "https://github.blog/news-insights/product-news/github-copilot-the-agent-awakens/"
+      },
+      {
+        "title": "Fabric CI/CD Deployment is here!",
+        "description": "Pending - just added!",
+        "url": "https://blog.fabric.microsoft.com/en-us/blog/introducing-fabric-cicd-deployment-tool/"
       }
     ]
   },
