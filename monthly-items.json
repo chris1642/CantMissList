@@ -4,8 +4,13 @@
     "items": [
       {
         "title": "FabCon Atlanta 2026: Every Announcement",
-        "description": "A comprehensive reference covering 30+ announcements from the combined FabCon + SQLCon event in Atlanta. Microsoft is positioning Fabric as the operating system for data, context, and action. Major highlights include Fabric IQ, OneLake Security, Runtime 2.0, Database Hub, Direct Lake on OneLake GA, Fabric Data Agents dropping to F2+, Snowflake interop GA, new mirroring sources (Oracle, SAP, SharePoint, Dremio), and much more — all with previous-state context and official citations.",
+        "description": "A comprehensive reference covering 30+ announcements from the combined FabCon + SQLCon event in Atlanta. Major highlights include Fabric IQ, OneLake Security, Runtime 2.0, Database Hub, Direct Lake on OneLake GA, Fabric Data Agents dropping to F2+, Snowflake interop GA, new mirroring sources (Oracle, SAP, SharePoint, Dremio), and much more — all with previous-state context and official citations.",
         "url": "https://www.psistla.com/articles/fabcon-atlanta-2026-announcements"
+      },
+      {
+        "title": "Power BI Agentic Development Marketplace",
+        "description": "A plugin marketplace that teaches AI coding agents like GitHub Copilot and Claude Code to work with Power BI and Fabric. Includes plugins for Tabular Editor, PBI Desktop, PBIP/TMDL authoring, report design, semantic models, and Fabric admin — with skills, subagents, and hooks that activate automatically based on task context. A rapidly growing community project with 480+ stars and weekly releases.",
+        "url": "https://github.com/data-goblin/power-bi-agentic-development"
       }
     ]
   },
